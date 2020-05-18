@@ -7,8 +7,7 @@ open Fable.React.Props
 open Shared
 open Thoth.Fetch
 
-type Model =
-    { Counter: Counter option }
+type Model = Counter option
 
 type Msg =
     | Increment
@@ -18,28 +17,28 @@ type Msg =
 let initialCounter() = Fetch.fetchAs<_, Counter> "/api/init"
 
 let init() =
-    let initialModel = { Counter = None }
+    let initialModel = None
     let loadCountCmd = Cmd.OfPromise.perform initialCounter () InitialCountLoaded
     initialModel, loadCountCmd
 
 let update msg model =
-    match model.Counter, msg with
+    match model, msg with
     | Some counter, Increment ->
-        let nextModel = { model with Counter = Some { Value = counter.Value + 1 } }
+        let nextModel = Some { Value = counter.Value + 1 }
         nextModel, Cmd.none
     | Some counter, Decrement ->
-        let nextModel = { model with Counter = Some { Value = counter.Value - 1 } }
+        let nextModel = Some { counter with Value = counter.Value - 1 }
         nextModel, Cmd.none
     | _, InitialCountLoaded initialCount ->
-        let nextModel = { Counter = Some initialCount }
+        let nextModel = Some initialCount
         nextModel, Cmd.none
     | _ ->
         model, Cmd.none
 
 let show =
     function
-    | { Counter = Some counter } -> string counter.Value
-    | { Counter = None } -> "Loading..."
+    | Some counter -> string counter.Value
+    | None -> "Loading..."
 
 let view model dispatch =
     div [
