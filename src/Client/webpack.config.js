@@ -29,12 +29,10 @@ var hmrPlugin =
 var devServer = {
     publicPath: '/',
     contentBase: resolve('./public'),
-    host: '0.0.0.0',
+    host: 'localhost',
     port: 8080,
     hot: true,
     inline: true,
-    // When using webpack-dev-server, redirect calls to Saturn server
-    // See https://webpack.js.org/configuration/dev-server/#devserver-proxy
     proxy: {
         // Redirect requests that start with /api/ to the server on port 8085
         '/api/**': {

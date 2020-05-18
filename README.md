@@ -24,7 +24,7 @@ Start the client:
 ```bash
 cd src\\client
 npm install
-node_modules\.bin\\webpack-dev-server
+npm start
 ```
 
 ## SAFE Stack Documentation
