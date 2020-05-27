@@ -22,14 +22,14 @@ let init() =
     initialModel, loadCountCmd
 
 let update msg model =
-    match model, msg with
-    | Some counter, Increment ->
+    match msg, model with
+    | Increment, Some counter ->
         let nextModel = Some { Value = counter.Value + 1 }
         nextModel, Cmd.none
-    | Some counter, Decrement ->
+    | Decrement, Some counter ->
         let nextModel = Some { counter with Value = counter.Value - 1 }
         nextModel, Cmd.none
-    | _, InitialCountLoaded initialCount ->
+    | InitialCountLoaded initialCount, _ ->
         let nextModel = Some initialCount
         nextModel, Cmd.none
     | _ ->
@@ -41,22 +41,14 @@ let show =
     | None -> "Loading..."
 
 let view model dispatch =
-    div [
-        Style [ TextAlign TextAlignOptions.Center; Padding 40 ]
-    ] [
+    div [ Style [ TextAlign TextAlignOptions.Center; Padding 40 ] ] [
         img [ Src "favicon.png" ]
         h1 [] [ str "SAFE Template" ]
         h2 [] [ str (show model) ]
-        button [
-            Style [ Margin 5; Padding 10 ]
-            OnClick(fun _ -> dispatch Decrement)
-        ] [
+        button [ Style [ Margin 5; Padding 10 ]; OnClick(fun _ -> dispatch Decrement) ] [
             str "-"
         ]
-        button [
-            Style [ Margin 5; Padding 10 ]
-            OnClick(fun _ -> dispatch Increment)
-        ] [
+        button [ Style [ Margin 5; Padding 10 ]; OnClick(fun _ -> dispatch Increment) ] [
             str "+"
         ]
     ]
