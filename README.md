@@ -11,15 +11,18 @@ You'll need to install the following pre-requisites in order to build SAFE appli
 ## Starting the application
 Start the server:
 ```bash
-dotnet run -p src\server
+cd src\server
+dotnet run
 ```
 
 Start the client:
 ```bash
 cd src\client
 npm install
-npm start
+npm run start
 ```
+
+Open a browser to `http://localhost:8080` to view the site.
 
 ## SAFE Stack Documentation
 You will find more documentation about the used F# components at the following places:
