@@ -4,25 +4,19 @@ This template can be used to generate a full-stack web application using the [SA
 ## Install pre-requisites
 You'll need to install the following pre-requisites in order to build SAFE applications
 
-* The [.NET Core SDK](https://www.microsoft.com/net/download)
+* The [.NET Core SDK](https://www.microsoft.com/net/download) 3.1 or higher.
 * [npm](https://nodejs.org/en/download/) package manager.
-* [Node LTS](https://nodejs.org/en/download/) installed for the front end components.
+* [Node LTS](https://nodejs.org/en/download/).
 
-## Work with the application
-Before you run the project **for the first time only** you should install its local tools with this command:
-
-```bash
-dotnet tool restore
-```
-
+## Starting the application
 Start the server:
 ```bash
-dotnet run -p src\\server
+dotnet run -p src\server
 ```
 
 Start the client:
 ```bash
-cd src\\client
+cd src\client
 npm install
 npm start
 ```
@@ -34,4 +28,4 @@ You will find more documentation about the used F# components at the following p
 * [Fable](https://fable.io/docs/)
 * [Elmish](https://elmish.github.io/elmish/)
 
-If you want to know more about the full Azure Stack and all of it's components (including Azure) visit the official [SAFE documentation](https://safe-stack.github.io/docs/).
+If you want to know more about the full Azure Stack and all of its components (including Azure) visit the official [SAFE documentation](https://safe-stack.github.io/docs/).
