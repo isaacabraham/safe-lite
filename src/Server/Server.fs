@@ -7,11 +7,8 @@ open Saturn
 open Shared
 
 let getEnvVar (name: string) (defaultValue: string) =
-    System.Environment.GetEnvironmentVariable name
-    |> function
-    | null
-    | "" -> defaultValue
-    | x -> x
+    let variable = System.Environment.GetEnvironmentVariable name
+    if isNull variable then defaultValue else variable
 
 let publicPath = getEnvVar "public_path" "../Client/public" |> Path.GetFullPath
 let port = getEnvVar "PORT" "8085" |> uint16
